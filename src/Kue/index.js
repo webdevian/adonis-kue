@@ -6,7 +6,7 @@ const kue = require('kue');
 const path = require('path');
 const CatLog = require('cat-log');
 const logger = new CatLog('adonis:kue');
-const Ioc = require('adonis-fold').Ioc;
+const { Ioc } = require('@adonisjs/fold');
 
 /**
  * @module Kue
