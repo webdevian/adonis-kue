@@ -1,13 +1,12 @@
 'user strict';
 
-const Ioc = require('adonis-fold').Ioc;
-const Command = Ioc.use('Adonis/Src/Command');
+const { Command } = require('@adonisjs/ace')
+const Kue = use('Adonis/Addons/Kue');
 
 class Listen extends Command {
 
   constructor (Kue) {
     super();
-    this.kue = Kue;
   }
 
   static get signature () {
@@ -18,8 +17,8 @@ class Listen extends Command {
     return 'Start the kue listener.';
   }
 
-  * handle (options, flags) {
-    this.kue.listen();
+  async handle (options, flags) {
+    Kue.listen();
   }
 }
 

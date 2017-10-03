@@ -6,7 +6,7 @@ const kue = require('kue');
 const path = require('path');
 const CatLog = require('cat-log');
 const logger = new CatLog('adonis:kue');
-const { Ioc } = require('@adonisjs/fold');
+const { ioc } = require('@adonisjs/fold');
 
 /**
  * @module Kue
@@ -15,7 +15,7 @@ const { Ioc } = require('@adonisjs/fold');
 class Kue {
   constructor (Helpers, Config) {
     this.logger = new CatLog('adonis:kue');
-    this.jobsPath = path.join(Helpers.appPath(), 'Jobs');
+    this.jobsPath = path.join(Helpers._appRoot, 'app', 'Jobs');
     this.jobsPath = path.normalize(this.jobsPath);
     this.connectionSettings = Config.get('kue.connection');
     if (!this.connectionSettings) {
@@ -79,9 +79,9 @@ class Kue {
         const filePath = path.join(this.jobsPath, file);
         try {
           const Job = require(filePath);
-          
+
           // Get instance of job class
-          const jobInstance = Ioc.make(Job);
+          const jobInstance = ioc.make(Job);
 
           // Every job must expose a key
           if (!Job.key) {
