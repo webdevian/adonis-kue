@@ -12,7 +12,7 @@ npm install --save adonis-kue
 
 ## Configure
 
-Register it in `bootstrap/app.js`:
+Register the kue provider in `start/app.js`:
 
 ```javascript
 const providers = [
@@ -21,28 +21,12 @@ const providers = [
 ]
 ```
 
-Also consider adding an alias to validation provider.
-
-```javascript
-const aliases = {
-  ...
-  Kue: 'Adonis/Addons/Kue'
-}
-```
-
-Register the commands:
+Register the commands provider:
 
 ```javascript
 const aceProviders = [
   ...
   'adonis-kue/providers/CommandsProvider'
-];
-
-...
-
-const commands = [
-  ...
-  'Adonis/Commands/Kue:Listen'
 ];
 ```
 

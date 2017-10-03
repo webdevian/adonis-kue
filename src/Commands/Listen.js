@@ -10,11 +10,11 @@ class Listen extends Command {
     this.kue = Kue;
   }
 
-  get signature () {
+  static get signature () {
     return 'kue:listen';
   }
 
-  get description () {
+  static get description () {
     return 'Start the kue listener.';
   }
 
